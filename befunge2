@@ -1,0 +1,23 @@
+>78+1>2*:.\1-v
+     \       :
+     |       <
+     @
+
+>78+2>:.\1-:#v_@
+     ^  *2\  <   
+
+
+Notes:
+
+2
+15
+start at 2
+print pow2
+swap stack
+subtract
+if top is 0
+end
+else
+swap
+multiply by 2
+redo loop
