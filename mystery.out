@@ -1,0 +1,604 @@
+
+mystery:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <text_start-0xc>:
+  100000:	02 b0 ad 1b 03 00    	add    0x31bad(%eax),%dh
+  100006:	00 00                	add    %al,(%eax)
+  100008:	fb                   	sti    
+  100009:	4f                   	dec    %edi
+  10000a:	52                   	push   %edx
+  10000b:	e4 66                	in     $0x66,%al
+
+0010000c <text_start>:
+  10000c:	66 90                	xchg   %ax,%ax
+  10000e:	66 90                	xchg   %ax,%ax
+
+00100010 <_start>:
+  100010:	bc 0c 70 10 00       	mov    $0x10700c,%esp
+  100015:	e8 02 00 00 00       	call   10001c <kernel_main>
+  10001a:	fa                   	cli    
+  10001b:	f4                   	hlt    
+
+0010001c <kernel_main>:
+  10001c:	55                   	push   %ebp
+  10001d:	89 e5                	mov    %esp,%ebp
+  10001f:	83 ec 18             	sub    $0x18,%esp
+  100022:	e8 10 04 00 00       	call   100437 <_Z8vga_initv>
+  100027:	83 ec 0c             	sub    $0xc,%esp
+  10002a:	68 00 10 10 00       	push   $0x101000
+  10002f:	e8 73 03 00 00       	call   1003a7 <_Z9vga_printPKc>
+  100034:	83 c4 10             	add    $0x10,%esp
+  100037:	83 ec 0c             	sub    $0xc,%esp
+  10003a:	68 0c 10 10 00       	push   $0x10100c
+  10003f:	e8 63 03 00 00       	call   1003a7 <_Z9vga_printPKc>
+  100044:	83 c4 10             	add    $0x10,%esp
+  100047:	83 ec 0c             	sub    $0xc,%esp
+  10004a:	68 39 10 10 00       	push   $0x101039
+  10004f:	e8 53 03 00 00       	call   1003a7 <_Z9vga_printPKc>
+  100054:	83 c4 10             	add    $0x10,%esp
+  100057:	c6 45 ea 4b          	movb   $0x4b,-0x16(%ebp)
+  10005b:	c6 45 eb 33          	movb   $0x33,-0x15(%ebp)
+  10005f:	c6 45 ec 72          	movb   $0x72,-0x14(%ebp)
+  100063:	c6 45 ed 4e          	movb   $0x4e,-0x13(%ebp)
+  100067:	c6 45 ee 33          	movb   $0x33,-0x12(%ebp)
+  10006b:	c6 45 ef 6c          	movb   $0x6c,-0x11(%ebp)
+  10006f:	c6 45 f0 73          	movb   $0x73,-0x10(%ebp)
+  100073:	c6 45 f1 20          	movb   $0x20,-0xf(%ebp)
+  100077:	c6 45 f2 52          	movb   $0x52,-0xe(%ebp)
+  10007b:	c6 45 f3 20          	movb   $0x20,-0xd(%ebp)
+  10007f:	c6 45 f4 43          	movb   $0x43,-0xc(%ebp)
+  100083:	c6 45 f5 30          	movb   $0x30,-0xb(%ebp)
+  100087:	c6 45 f6 30          	movb   $0x30,-0xa(%ebp)
+  10008b:	c6 45 f7 4c          	movb   $0x4c,-0x9(%ebp)
+  10008f:	83 ec 0c             	sub    $0xc,%esp
+  100092:	8d 45 ea             	lea    -0x16(%ebp),%eax
+  100095:	50                   	push   %eax
+  100096:	e8 c4 02 00 00       	call   10035f <_Z9vga_printPc>
+  10009b:	83 c4 10             	add    $0x10,%esp
+  10009e:	fa                   	cli    
+  10009f:	f4                   	hlt    
+  1000a0:	90                   	nop
+  1000a1:	c9                   	leave  
+  1000a2:	c3                   	ret    
+
+001000a3 <_Z6scrollv>:
+  1000a3:	55                   	push   %ebp
+  1000a4:	89 e5                	mov    %esp,%ebp
+  1000a6:	53                   	push   %ebx
+  1000a7:	83 ec 14             	sub    $0x14,%esp
+  1000aa:	a1 00 20 10 00       	mov    0x102000,%eax
+  1000af:	c1 e0 08             	shl    $0x8,%eax
+  1000b2:	83 c8 20             	or     $0x20,%eax
+  1000b5:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  1000b8:	a1 08 30 10 00       	mov    0x103008,%eax
+  1000bd:	83 f8 18             	cmp    $0x18,%eax
+  1000c0:	7e 76                	jle    100138 <_Z6scrollv+0x95>
+  1000c2:	a1 08 30 10 00       	mov    0x103008,%eax
+  1000c7:	83 e8 18             	sub    $0x18,%eax
+  1000ca:	89 45 f0             	mov    %eax,-0x10(%ebp)
+  1000cd:	8b 45 f0             	mov    -0x10(%ebp),%eax
+  1000d0:	69 c0 60 ff ff ff    	imul   $0xffffff60,%eax,%eax
+  1000d6:	8d 88 a0 0f 00 00    	lea    0xfa0(%eax),%ecx
+  1000dc:	8b 1d 00 30 10 00    	mov    0x103000,%ebx
+  1000e2:	8b 55 f0             	mov    -0x10(%ebp),%edx
+  1000e5:	89 d0                	mov    %edx,%eax
+  1000e7:	c1 e0 02             	shl    $0x2,%eax
+  1000ea:	01 d0                	add    %edx,%eax
+  1000ec:	c1 e0 05             	shl    $0x5,%eax
+  1000ef:	8d 14 03             	lea    (%ebx,%eax,1),%edx
+  1000f2:	a1 00 30 10 00       	mov    0x103000,%eax
+  1000f7:	83 ec 04             	sub    $0x4,%esp
+  1000fa:	51                   	push   %ecx
+  1000fb:	52                   	push   %edx
+  1000fc:	50                   	push   %eax
+  1000fd:	e8 9d 04 00 00       	call   10059f <_Z6memcpyPvPKvm>
+  100102:	83 c4 10             	add    $0x10,%esp
+  100105:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  100108:	8b 15 00 30 10 00    	mov    0x103000,%edx
+  10010e:	8b 4d f0             	mov    -0x10(%ebp),%ecx
+  100111:	69 c9 60 ff ff ff    	imul   $0xffffff60,%ecx,%ecx
+  100117:	81 c1 a0 0f 00 00    	add    $0xfa0,%ecx
+  10011d:	01 ca                	add    %ecx,%edx
+  10011f:	83 ec 04             	sub    $0x4,%esp
+  100122:	6a 50                	push   $0x50
+  100124:	50                   	push   %eax
+  100125:	52                   	push   %edx
+  100126:	e8 e9 04 00 00       	call   100614 <_Z7memsetwPvim>
+  10012b:	83 c4 10             	add    $0x10,%esp
+  10012e:	c7 05 08 30 10 00 18 	movl   $0x18,0x103008
+  100135:	00 00 00 
+  100138:	90                   	nop
+  100139:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+  10013c:	c9                   	leave  
+  10013d:	c3                   	ret    
+
+0010013e <_Z11move_cursorv>:
+  10013e:	55                   	push   %ebp
+  10013f:	89 e5                	mov    %esp,%ebp
+  100141:	83 ec 18             	sub    $0x18,%esp
+  100144:	8b 15 08 30 10 00    	mov    0x103008,%edx
+  10014a:	89 d0                	mov    %edx,%eax
+  10014c:	c1 e0 02             	shl    $0x2,%eax
+  10014f:	01 d0                	add    %edx,%eax
+  100151:	c1 e0 04             	shl    $0x4,%eax
+  100154:	89 c2                	mov    %eax,%edx
+  100156:	a1 04 30 10 00       	mov    0x103004,%eax
+  10015b:	01 d0                	add    %edx,%eax
+  10015d:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  100160:	83 ec 08             	sub    $0x8,%esp
+  100163:	6a 0e                	push   $0xe
+  100165:	68 d4 03 00 00       	push   $0x3d4
+  10016a:	e8 e0 02 00 00       	call   10044f <outb>
+  10016f:	83 c4 10             	add    $0x10,%esp
+  100172:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  100175:	c1 e8 08             	shr    $0x8,%eax
+  100178:	0f b6 c0             	movzbl %al,%eax
+  10017b:	83 ec 08             	sub    $0x8,%esp
+  10017e:	50                   	push   %eax
+  10017f:	68 d5 03 00 00       	push   $0x3d5
+  100184:	e8 c6 02 00 00       	call   10044f <outb>
+  100189:	83 c4 10             	add    $0x10,%esp
+  10018c:	83 ec 08             	sub    $0x8,%esp
+  10018f:	6a 0f                	push   $0xf
+  100191:	68 d4 03 00 00       	push   $0x3d4
+  100196:	e8 b4 02 00 00       	call   10044f <outb>
+  10019b:	83 c4 10             	add    $0x10,%esp
+  10019e:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  1001a1:	0f b6 c0             	movzbl %al,%eax
+  1001a4:	83 ec 08             	sub    $0x8,%esp
+  1001a7:	50                   	push   %eax
+  1001a8:	68 d5 03 00 00       	push   $0x3d5
+  1001ad:	e8 9d 02 00 00       	call   10044f <outb>
+  1001b2:	83 c4 10             	add    $0x10,%esp
+  1001b5:	90                   	nop
+  1001b6:	c9                   	leave  
+  1001b7:	c3                   	ret    
+
+001001b8 <_Z12clear_screenv>:
+  1001b8:	55                   	push   %ebp
+  1001b9:	89 e5                	mov    %esp,%ebp
+  1001bb:	53                   	push   %ebx
+  1001bc:	83 ec 14             	sub    $0x14,%esp
+  1001bf:	a1 00 20 10 00       	mov    0x102000,%eax
+  1001c4:	c1 e0 08             	shl    $0x8,%eax
+  1001c7:	83 c8 20             	or     $0x20,%eax
+  1001ca:	89 45 f0             	mov    %eax,-0x10(%ebp)
+  1001cd:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%ebp)
+  1001d4:	83 7d f4 18          	cmpl   $0x18,-0xc(%ebp)
+  1001d8:	7f 2d                	jg     100207 <_Z12clear_screenv+0x4f>
+  1001da:	8b 4d f0             	mov    -0x10(%ebp),%ecx
+  1001dd:	8b 1d 00 30 10 00    	mov    0x103000,%ebx
+  1001e3:	8b 55 f4             	mov    -0xc(%ebp),%edx
+  1001e6:	89 d0                	mov    %edx,%eax
+  1001e8:	c1 e0 02             	shl    $0x2,%eax
+  1001eb:	01 d0                	add    %edx,%eax
+  1001ed:	c1 e0 05             	shl    $0x5,%eax
+  1001f0:	01 d8                	add    %ebx,%eax
+  1001f2:	83 ec 04             	sub    $0x4,%esp
+  1001f5:	6a 50                	push   $0x50
+  1001f7:	51                   	push   %ecx
+  1001f8:	50                   	push   %eax
+  1001f9:	e8 16 04 00 00       	call   100614 <_Z7memsetwPvim>
+  1001fe:	83 c4 10             	add    $0x10,%esp
+  100201:	83 45 f4 01          	addl   $0x1,-0xc(%ebp)
+  100205:	eb cd                	jmp    1001d4 <_Z12clear_screenv+0x1c>
+  100207:	c7 05 04 30 10 00 00 	movl   $0x0,0x103004
+  10020e:	00 00 00 
+  100211:	c7 05 08 30 10 00 00 	movl   $0x0,0x103008
+  100218:	00 00 00 
+  10021b:	e8 1e ff ff ff       	call   10013e <_Z11move_cursorv>
+  100220:	90                   	nop
+  100221:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+  100224:	c9                   	leave  
+  100225:	c3                   	ret    
+
+00100226 <_Z13vga_backspacev>:
+  100226:	55                   	push   %ebp
+  100227:	89 e5                	mov    %esp,%ebp
+  100229:	83 ec 08             	sub    $0x8,%esp
+  10022c:	a1 04 30 10 00       	mov    0x103004,%eax
+  100231:	83 e8 01             	sub    $0x1,%eax
+  100234:	a3 04 30 10 00       	mov    %eax,0x103004
+  100239:	e8 00 ff ff ff       	call   10013e <_Z11move_cursorv>
+  10023e:	83 ec 0c             	sub    $0xc,%esp
+  100241:	68 46 10 10 00       	push   $0x101046
+  100246:	e8 5c 01 00 00       	call   1003a7 <_Z9vga_printPKc>
+  10024b:	83 c4 10             	add    $0x10,%esp
+  10024e:	a1 04 30 10 00       	mov    0x103004,%eax
+  100253:	83 e8 01             	sub    $0x1,%eax
+  100256:	a3 04 30 10 00       	mov    %eax,0x103004
+  10025b:	e8 de fe ff ff       	call   10013e <_Z11move_cursorv>
+  100260:	90                   	nop
+  100261:	c9                   	leave  
+  100262:	c3                   	ret    
+
+00100263 <_Z9vga_printc>:
+  100263:	55                   	push   %ebp
+  100264:	89 e5                	mov    %esp,%ebp
+  100266:	83 ec 28             	sub    $0x28,%esp
+  100269:	8b 45 08             	mov    0x8(%ebp),%eax
+  10026c:	88 45 e4             	mov    %al,-0x1c(%ebp)
+  10026f:	a1 00 20 10 00       	mov    0x102000,%eax
+  100274:	c1 e0 08             	shl    $0x8,%eax
+  100277:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  10027a:	80 7d e4 08          	cmpb   $0x8,-0x1c(%ebp)
+  10027e:	75 1f                	jne    10029f <_Z9vga_printc+0x3c>
+  100280:	a1 04 30 10 00       	mov    0x103004,%eax
+  100285:	85 c0                	test   %eax,%eax
+  100287:	0f 84 a4 00 00 00    	je     100331 <_Z9vga_printc+0xce>
+  10028d:	a1 04 30 10 00       	mov    0x103004,%eax
+  100292:	83 e8 01             	sub    $0x1,%eax
+  100295:	a3 04 30 10 00       	mov    %eax,0x103004
+  10029a:	e9 92 00 00 00       	jmp    100331 <_Z9vga_printc+0xce>
+  10029f:	80 7d e4 09          	cmpb   $0x9,-0x1c(%ebp)
+  1002a3:	75 12                	jne    1002b7 <_Z9vga_printc+0x54>
+  1002a5:	a1 04 30 10 00       	mov    0x103004,%eax
+  1002aa:	83 c0 08             	add    $0x8,%eax
+  1002ad:	83 e0 f8             	and    $0xfffffff8,%eax
+  1002b0:	a3 04 30 10 00       	mov    %eax,0x103004
+  1002b5:	eb 7a                	jmp    100331 <_Z9vga_printc+0xce>
+  1002b7:	80 7d e4 0d          	cmpb   $0xd,-0x1c(%ebp)
+  1002bb:	75 0c                	jne    1002c9 <_Z9vga_printc+0x66>
+  1002bd:	c7 05 04 30 10 00 00 	movl   $0x0,0x103004
+  1002c4:	00 00 00 
+  1002c7:	eb 68                	jmp    100331 <_Z9vga_printc+0xce>
+  1002c9:	80 7d e4 0a          	cmpb   $0xa,-0x1c(%ebp)
+  1002cd:	75 19                	jne    1002e8 <_Z9vga_printc+0x85>
+  1002cf:	c7 05 04 30 10 00 00 	movl   $0x0,0x103004
+  1002d6:	00 00 00 
+  1002d9:	a1 08 30 10 00       	mov    0x103008,%eax
+  1002de:	83 c0 01             	add    $0x1,%eax
+  1002e1:	a3 08 30 10 00       	mov    %eax,0x103008
+  1002e6:	eb 49                	jmp    100331 <_Z9vga_printc+0xce>
+  1002e8:	80 7d e4 1f          	cmpb   $0x1f,-0x1c(%ebp)
+  1002ec:	7e 43                	jle    100331 <_Z9vga_printc+0xce>
+  1002ee:	8b 0d 00 30 10 00    	mov    0x103000,%ecx
+  1002f4:	8b 15 08 30 10 00    	mov    0x103008,%edx
+  1002fa:	89 d0                	mov    %edx,%eax
+  1002fc:	c1 e0 02             	shl    $0x2,%eax
+  1002ff:	01 d0                	add    %edx,%eax
+  100301:	c1 e0 04             	shl    $0x4,%eax
+  100304:	89 c2                	mov    %eax,%edx
+  100306:	a1 04 30 10 00       	mov    0x103004,%eax
+  10030b:	01 d0                	add    %edx,%eax
+  10030d:	01 c0                	add    %eax,%eax
+  10030f:	01 c8                	add    %ecx,%eax
+  100311:	89 45 f0             	mov    %eax,-0x10(%ebp)
+  100314:	66 0f be 45 e4       	movsbw -0x1c(%ebp),%ax
+  100319:	8b 55 f4             	mov    -0xc(%ebp),%edx
+  10031c:	09 c2                	or     %eax,%edx
+  10031e:	8b 45 f0             	mov    -0x10(%ebp),%eax
+  100321:	66 89 10             	mov    %dx,(%eax)
+  100324:	a1 04 30 10 00       	mov    0x103004,%eax
+  100329:	83 c0 01             	add    $0x1,%eax
+  10032c:	a3 04 30 10 00       	mov    %eax,0x103004
+  100331:	a1 04 30 10 00       	mov    0x103004,%eax
+  100336:	83 f8 4f             	cmp    $0x4f,%eax
+  100339:	7e 17                	jle    100352 <_Z9vga_printc+0xef>
+  10033b:	c7 05 04 30 10 00 00 	movl   $0x0,0x103004
+  100342:	00 00 00 
+  100345:	a1 08 30 10 00       	mov    0x103008,%eax
+  10034a:	83 c0 01             	add    $0x1,%eax
+  10034d:	a3 08 30 10 00       	mov    %eax,0x103008
+  100352:	e8 4c fd ff ff       	call   1000a3 <_Z6scrollv>
+  100357:	e8 e2 fd ff ff       	call   10013e <_Z11move_cursorv>
+  10035c:	90                   	nop
+  10035d:	c9                   	leave  
+  10035e:	c3                   	ret    
+
+0010035f <_Z9vga_printPc>:
+  10035f:	55                   	push   %ebp
+  100360:	89 e5                	mov    %esp,%ebp
+  100362:	83 ec 18             	sub    $0x18,%esp
+  100365:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%ebp)
+  10036c:	83 ec 0c             	sub    $0xc,%esp
+  10036f:	ff 75 08             	pushl  0x8(%ebp)
+  100372:	e8 d1 02 00 00       	call   100648 <_Z6strlenPKc>
+  100377:	83 c4 10             	add    $0x10,%esp
+  10037a:	3b 45 f4             	cmp    -0xc(%ebp),%eax
+  10037d:	0f 97 c0             	seta   %al
+  100380:	84 c0                	test   %al,%al
+  100382:	74 20                	je     1003a4 <_Z9vga_printPc+0x45>
+  100384:	8b 55 08             	mov    0x8(%ebp),%edx
+  100387:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  10038a:	01 d0                	add    %edx,%eax
+  10038c:	0f b6 00             	movzbl (%eax),%eax
+  10038f:	0f be c0             	movsbl %al,%eax
+  100392:	83 ec 0c             	sub    $0xc,%esp
+  100395:	50                   	push   %eax
+  100396:	e8 c8 fe ff ff       	call   100263 <_Z9vga_printc>
+  10039b:	83 c4 10             	add    $0x10,%esp
+  10039e:	83 45 f4 01          	addl   $0x1,-0xc(%ebp)
+  1003a2:	eb c8                	jmp    10036c <_Z9vga_printPc+0xd>
+  1003a4:	90                   	nop
+  1003a5:	c9                   	leave  
+  1003a6:	c3                   	ret    
+
+001003a7 <_Z9vga_printPKc>:
+  1003a7:	55                   	push   %ebp
+  1003a8:	89 e5                	mov    %esp,%ebp
+  1003aa:	83 ec 18             	sub    $0x18,%esp
+  1003ad:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%ebp)
+  1003b4:	83 ec 0c             	sub    $0xc,%esp
+  1003b7:	ff 75 08             	pushl  0x8(%ebp)
+  1003ba:	e8 89 02 00 00       	call   100648 <_Z6strlenPKc>
+  1003bf:	83 c4 10             	add    $0x10,%esp
+  1003c2:	3b 45 f4             	cmp    -0xc(%ebp),%eax
+  1003c5:	0f 97 c0             	seta   %al
+  1003c8:	84 c0                	test   %al,%al
+  1003ca:	74 20                	je     1003ec <_Z9vga_printPKc+0x45>
+  1003cc:	8b 55 08             	mov    0x8(%ebp),%edx
+  1003cf:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  1003d2:	01 d0                	add    %edx,%eax
+  1003d4:	0f b6 00             	movzbl (%eax),%eax
+  1003d7:	0f be c0             	movsbl %al,%eax
+  1003da:	83 ec 0c             	sub    $0xc,%esp
+  1003dd:	50                   	push   %eax
+  1003de:	e8 80 fe ff ff       	call   100263 <_Z9vga_printc>
+  1003e3:	83 c4 10             	add    $0x10,%esp
+  1003e6:	83 45 f4 01          	addl   $0x1,-0xc(%ebp)
+  1003ea:	eb c8                	jmp    1003b4 <_Z9vga_printPKc+0xd>
+  1003ec:	90                   	nop
+  1003ed:	c9                   	leave  
+  1003ee:	c3                   	ret    
+
+001003ef <_Z9vga_printii>:
+  1003ef:	55                   	push   %ebp
+  1003f0:	89 e5                	mov    %esp,%ebp
+  1003f2:	83 ec 28             	sub    $0x28,%esp
+  1003f5:	83 ec 04             	sub    $0x4,%esp
+  1003f8:	ff 75 0c             	pushl  0xc(%ebp)
+  1003fb:	8d 45 d8             	lea    -0x28(%ebp),%eax
+  1003fe:	50                   	push   %eax
+  1003ff:	ff 75 08             	pushl  0x8(%ebp)
+  100402:	e8 c0 00 00 00       	call   1004c7 <_Z4itoaiPci>
+  100407:	83 c4 10             	add    $0x10,%esp
+  10040a:	83 ec 0c             	sub    $0xc,%esp
+  10040d:	8d 45 d8             	lea    -0x28(%ebp),%eax
+  100410:	50                   	push   %eax
+  100411:	e8 49 ff ff ff       	call   10035f <_Z9vga_printPc>
+  100416:	83 c4 10             	add    $0x10,%esp
+  100419:	90                   	nop
+  10041a:	c9                   	leave  
+  10041b:	c3                   	ret    
+
+0010041c <_Z14set_text_color9vga_colorS_>:
+  10041c:	55                   	push   %ebp
+  10041d:	89 e5                	mov    %esp,%ebp
+  10041f:	8b 45 0c             	mov    0xc(%ebp),%eax
+  100422:	c1 e0 04             	shl    $0x4,%eax
+  100425:	89 c2                	mov    %eax,%edx
+  100427:	8b 45 08             	mov    0x8(%ebp),%eax
+  10042a:	83 e0 0f             	and    $0xf,%eax
+  10042d:	09 d0                	or     %edx,%eax
+  10042f:	a3 00 20 10 00       	mov    %eax,0x102000
+  100434:	90                   	nop
+  100435:	5d                   	pop    %ebp
+  100436:	c3                   	ret    
+
+00100437 <_Z8vga_initv>:
+  100437:	55                   	push   %ebp
+  100438:	89 e5                	mov    %esp,%ebp
+  10043a:	83 ec 08             	sub    $0x8,%esp
+  10043d:	c7 05 00 30 10 00 00 	movl   $0xb8000,0x103000
+  100444:	80 0b 00 
+  100447:	e8 6c fd ff ff       	call   1001b8 <_Z12clear_screenv>
+  10044c:	90                   	nop
+  10044d:	c9                   	leave  
+  10044e:	c3                   	ret    
+
+0010044f <outb>:
+  10044f:	55                   	push   %ebp
+  100450:	89 e5                	mov    %esp,%ebp
+  100452:	83 ec 08             	sub    $0x8,%esp
+  100455:	8b 55 08             	mov    0x8(%ebp),%edx
+  100458:	8b 45 0c             	mov    0xc(%ebp),%eax
+  10045b:	66 89 55 fc          	mov    %dx,-0x4(%ebp)
+  10045f:	88 45 f8             	mov    %al,-0x8(%ebp)
+  100462:	0f b6 45 f8          	movzbl -0x8(%ebp),%eax
+  100466:	0f b7 55 fc          	movzwl -0x4(%ebp),%edx
+  10046a:	ee                   	out    %al,(%dx)
+  10046b:	90                   	nop
+  10046c:	c9                   	leave  
+  10046d:	c3                   	ret    
+
+0010046e <inb>:
+  10046e:	55                   	push   %ebp
+  10046f:	89 e5                	mov    %esp,%ebp
+  100471:	83 ec 14             	sub    $0x14,%esp
+  100474:	8b 45 08             	mov    0x8(%ebp),%eax
+  100477:	66 89 45 ec          	mov    %ax,-0x14(%ebp)
+  10047b:	0f b7 45 ec          	movzwl -0x14(%ebp),%eax
+  10047f:	89 c2                	mov    %eax,%edx
+  100481:	ec                   	in     (%dx),%al
+  100482:	88 45 ff             	mov    %al,-0x1(%ebp)
+  100485:	0f b6 45 ff          	movzbl -0x1(%ebp),%eax
+  100489:	c9                   	leave  
+  10048a:	c3                   	ret    
+
+0010048b <_Z7reversePcS_>:
+  10048b:	55                   	push   %ebp
+  10048c:	89 e5                	mov    %esp,%ebp
+  10048e:	83 ec 10             	sub    $0x10,%esp
+  100491:	8b 45 0c             	mov    0xc(%ebp),%eax
+  100494:	3b 45 08             	cmp    0x8(%ebp),%eax
+  100497:	76 2b                	jbe    1004c4 <_Z7reversePcS_+0x39>
+  100499:	8b 45 0c             	mov    0xc(%ebp),%eax
+  10049c:	0f b6 00             	movzbl (%eax),%eax
+  10049f:	88 45 ff             	mov    %al,-0x1(%ebp)
+  1004a2:	8b 45 0c             	mov    0xc(%ebp),%eax
+  1004a5:	8d 50 ff             	lea    -0x1(%eax),%edx
+  1004a8:	89 55 0c             	mov    %edx,0xc(%ebp)
+  1004ab:	8b 55 08             	mov    0x8(%ebp),%edx
+  1004ae:	0f b6 12             	movzbl (%edx),%edx
+  1004b1:	88 10                	mov    %dl,(%eax)
+  1004b3:	8b 45 08             	mov    0x8(%ebp),%eax
+  1004b6:	8d 50 01             	lea    0x1(%eax),%edx
+  1004b9:	89 55 08             	mov    %edx,0x8(%ebp)
+  1004bc:	0f b6 55 ff          	movzbl -0x1(%ebp),%edx
+  1004c0:	88 10                	mov    %dl,(%eax)
+  1004c2:	eb cd                	jmp    100491 <_Z7reversePcS_+0x6>
+  1004c4:	90                   	nop
+  1004c5:	c9                   	leave  
+  1004c6:	c3                   	ret    
+
+001004c7 <_Z4itoaiPci>:
+  1004c7:	55                   	push   %ebp
+  1004c8:	89 e5                	mov    %esp,%ebp
+  1004ca:	83 ec 30             	sub    $0x30,%esp
+  1004cd:	c7 45 d3 30 31 32 33 	movl   $0x33323130,-0x2d(%ebp)
+  1004d4:	c7 45 d7 34 35 36 37 	movl   $0x37363534,-0x29(%ebp)
+  1004db:	c7 45 db 38 39 61 62 	movl   $0x62613938,-0x25(%ebp)
+  1004e2:	c7 45 df 63 64 65 66 	movl   $0x66656463,-0x21(%ebp)
+  1004e9:	c7 45 e3 67 68 69 6a 	movl   $0x6a696867,-0x1d(%ebp)
+  1004f0:	c7 45 e7 6b 6c 6d 6e 	movl   $0x6e6d6c6b,-0x19(%ebp)
+  1004f7:	c7 45 eb 6f 70 71 72 	movl   $0x7271706f,-0x15(%ebp)
+  1004fe:	c7 45 ef 73 74 75 76 	movl   $0x76757473,-0x11(%ebp)
+  100505:	c7 45 f3 77 78 79 7a 	movl   $0x7a797877,-0xd(%ebp)
+  10050c:	c6 45 f7 00          	movb   $0x0,-0x9(%ebp)
+  100510:	8b 45 0c             	mov    0xc(%ebp),%eax
+  100513:	89 45 fc             	mov    %eax,-0x4(%ebp)
+  100516:	83 7d 10 01          	cmpl   $0x1,0x10(%ebp)
+  10051a:	7e 06                	jle    100522 <_Z4itoaiPci+0x5b>
+  10051c:	83 7d 10 23          	cmpl   $0x23,0x10(%ebp)
+  100520:	7e 0b                	jle    10052d <_Z4itoaiPci+0x66>
+  100522:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100525:	c6 00 00             	movb   $0x0,(%eax)
+  100528:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  10052b:	eb 70                	jmp    10059d <_Z4itoaiPci+0xd6>
+  10052d:	8b 45 08             	mov    0x8(%ebp),%eax
+  100530:	89 45 f8             	mov    %eax,-0x8(%ebp)
+  100533:	8b 45 f8             	mov    -0x8(%ebp),%eax
+  100536:	c1 e8 1f             	shr    $0x1f,%eax
+  100539:	84 c0                	test   %al,%al
+  10053b:	74 03                	je     100540 <_Z4itoaiPci+0x79>
+  10053d:	f7 5d 08             	negl   0x8(%ebp)
+  100540:	8b 4d fc             	mov    -0x4(%ebp),%ecx
+  100543:	8d 41 01             	lea    0x1(%ecx),%eax
+  100546:	89 45 fc             	mov    %eax,-0x4(%ebp)
+  100549:	8b 45 08             	mov    0x8(%ebp),%eax
+  10054c:	99                   	cltd   
+  10054d:	f7 7d 10             	idivl  0x10(%ebp)
+  100550:	89 d0                	mov    %edx,%eax
+  100552:	0f b6 44 05 d3       	movzbl -0x2d(%ebp,%eax,1),%eax
+  100557:	88 01                	mov    %al,(%ecx)
+  100559:	8b 45 08             	mov    0x8(%ebp),%eax
+  10055c:	99                   	cltd   
+  10055d:	f7 7d 10             	idivl  0x10(%ebp)
+  100560:	89 45 08             	mov    %eax,0x8(%ebp)
+  100563:	83 7d 08 00          	cmpl   $0x0,0x8(%ebp)
+  100567:	0f 95 c0             	setne  %al
+  10056a:	84 c0                	test   %al,%al
+  10056c:	74 02                	je     100570 <_Z4itoaiPci+0xa9>
+  10056e:	eb d0                	jmp    100540 <_Z4itoaiPci+0x79>
+  100570:	83 7d f8 00          	cmpl   $0x0,-0x8(%ebp)
+  100574:	79 0c                	jns    100582 <_Z4itoaiPci+0xbb>
+  100576:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100579:	8d 50 01             	lea    0x1(%eax),%edx
+  10057c:	89 55 fc             	mov    %edx,-0x4(%ebp)
+  10057f:	c6 00 2d             	movb   $0x2d,(%eax)
+  100582:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100585:	c6 00 00             	movb   $0x0,(%eax)
+  100588:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  10058b:	83 e8 01             	sub    $0x1,%eax
+  10058e:	50                   	push   %eax
+  10058f:	ff 75 0c             	pushl  0xc(%ebp)
+  100592:	e8 f4 fe ff ff       	call   10048b <_Z7reversePcS_>
+  100597:	83 c4 08             	add    $0x8,%esp
+  10059a:	8b 45 0c             	mov    0xc(%ebp),%eax
+  10059d:	c9                   	leave  
+  10059e:	c3                   	ret    
+
+0010059f <_Z6memcpyPvPKvm>:
+  10059f:	55                   	push   %ebp
+  1005a0:	89 e5                	mov    %esp,%ebp
+  1005a2:	83 ec 10             	sub    $0x10,%esp
+  1005a5:	8b 45 08             	mov    0x8(%ebp),%eax
+  1005a8:	89 45 fc             	mov    %eax,-0x4(%ebp)
+  1005ab:	8b 45 0c             	mov    0xc(%ebp),%eax
+  1005ae:	89 45 f8             	mov    %eax,-0x8(%ebp)
+  1005b1:	8b 45 10             	mov    0x10(%ebp),%eax
+  1005b4:	8d 50 ff             	lea    -0x1(%eax),%edx
+  1005b7:	89 55 10             	mov    %edx,0x10(%ebp)
+  1005ba:	85 c0                	test   %eax,%eax
+  1005bc:	0f 95 c0             	setne  %al
+  1005bf:	84 c0                	test   %al,%al
+  1005c1:	74 19                	je     1005dc <_Z6memcpyPvPKvm+0x3d>
+  1005c3:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  1005c6:	8d 50 01             	lea    0x1(%eax),%edx
+  1005c9:	89 55 fc             	mov    %edx,-0x4(%ebp)
+  1005cc:	8b 55 f8             	mov    -0x8(%ebp),%edx
+  1005cf:	8d 4a 01             	lea    0x1(%edx),%ecx
+  1005d2:	89 4d f8             	mov    %ecx,-0x8(%ebp)
+  1005d5:	0f b6 12             	movzbl (%edx),%edx
+  1005d8:	88 10                	mov    %dl,(%eax)
+  1005da:	eb d5                	jmp    1005b1 <_Z6memcpyPvPKvm+0x12>
+  1005dc:	8b 45 08             	mov    0x8(%ebp),%eax
+  1005df:	c9                   	leave  
+  1005e0:	c3                   	ret    
+
+001005e1 <_Z6memsetPvim>:
+  1005e1:	55                   	push   %ebp
+  1005e2:	89 e5                	mov    %esp,%ebp
+  1005e4:	83 ec 10             	sub    $0x10,%esp
+  1005e7:	8b 45 08             	mov    0x8(%ebp),%eax
+  1005ea:	89 45 fc             	mov    %eax,-0x4(%ebp)
+  1005ed:	8b 45 10             	mov    0x10(%ebp),%eax
+  1005f0:	8d 50 ff             	lea    -0x1(%eax),%edx
+  1005f3:	89 55 10             	mov    %edx,0x10(%ebp)
+  1005f6:	85 c0                	test   %eax,%eax
+  1005f8:	0f 95 c0             	setne  %al
+  1005fb:	84 c0                	test   %al,%al
+  1005fd:	74 10                	je     10060f <_Z6memsetPvim+0x2e>
+  1005ff:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100602:	8d 50 01             	lea    0x1(%eax),%edx
+  100605:	89 55 fc             	mov    %edx,-0x4(%ebp)
+  100608:	8b 55 0c             	mov    0xc(%ebp),%edx
+  10060b:	88 10                	mov    %dl,(%eax)
+  10060d:	eb de                	jmp    1005ed <_Z6memsetPvim+0xc>
+  10060f:	8b 45 08             	mov    0x8(%ebp),%eax
+  100612:	c9                   	leave  
+  100613:	c3                   	ret    
+
+00100614 <_Z7memsetwPvim>:
+  100614:	55                   	push   %ebp
+  100615:	89 e5                	mov    %esp,%ebp
+  100617:	83 ec 10             	sub    $0x10,%esp
+  10061a:	8b 45 08             	mov    0x8(%ebp),%eax
+  10061d:	89 45 fc             	mov    %eax,-0x4(%ebp)
+  100620:	8b 45 10             	mov    0x10(%ebp),%eax
+  100623:	8d 50 ff             	lea    -0x1(%eax),%edx
+  100626:	89 55 10             	mov    %edx,0x10(%ebp)
+  100629:	85 c0                	test   %eax,%eax
+  10062b:	0f 95 c0             	setne  %al
+  10062e:	84 c0                	test   %al,%al
+  100630:	74 11                	je     100643 <_Z7memsetwPvim+0x2f>
+  100632:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100635:	8d 50 02             	lea    0x2(%eax),%edx
+  100638:	89 55 fc             	mov    %edx,-0x4(%ebp)
+  10063b:	8b 55 0c             	mov    0xc(%ebp),%edx
+  10063e:	66 89 10             	mov    %dx,(%eax)
+  100641:	eb dd                	jmp    100620 <_Z7memsetwPvim+0xc>
+  100643:	8b 45 08             	mov    0x8(%ebp),%eax
+  100646:	c9                   	leave  
+  100647:	c3                   	ret    
+
+00100648 <_Z6strlenPKc>:
+  100648:	55                   	push   %ebp
+  100649:	89 e5                	mov    %esp,%ebp
+  10064b:	83 ec 10             	sub    $0x10,%esp
+  10064e:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%ebp)
+  100655:	8b 55 08             	mov    0x8(%ebp),%edx
+  100658:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  10065b:	01 d0                	add    %edx,%eax
+  10065d:	0f b6 00             	movzbl (%eax),%eax
+  100660:	84 c0                	test   %al,%al
+  100662:	74 06                	je     10066a <_Z6strlenPKc+0x22>
+  100664:	83 45 fc 01          	addl   $0x1,-0x4(%ebp)
+  100668:	eb eb                	jmp    100655 <_Z6strlenPKc+0xd>
+  10066a:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  10066d:	c9                   	leave  
+  10066e:	c3                   	ret    
